@@ -63,6 +63,8 @@ private:
     
 };
 
+extern BMFontConfiguration* FNTConfigLoadFile(const std::string& fntFile);
+
 NS_CC_END
 
 #endif /* defined(__cocos2d_libs__CCFontFNT__) */
