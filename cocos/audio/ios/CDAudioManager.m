@@ -91,7 +91,42 @@ NSString * const kCDN_AudioManagerInitialised = @"kCDN_AudioManagerInitialised";
     audioSourcePlayer.volume = volume;
     audioSourcePlayer.numberOfLoops = numberOfLoops;
     state = kLAS_Loaded;
-}    
+}
+
+-(void) load:(NSString*) filePath data:(const char *) data size:(unsigned int) size {
+    //We have alread loaded a file previously,  check if we are being asked to load the same file
+    if (state == kLAS_Init || ![filePath isEqualToString:audioSourceFilePath]) {
+        CDLOGINFO(@"Denshion::CDLongAudioSource - Loading new audio source %@",filePath);
+        //New file
+        if (state != kLAS_Init) {
+            [audioSourceFilePath release];//Release old file path
+            [audioSourcePlayer release];//Release old AVAudioPlayer, they can't be reused
+        }
+        audioSourceFilePath = [filePath copy];
+        NSError *error = nil;
+        //NSString *path = [CDUtilities fullPathFromRelativePath:audioSourceFilePath];
+        //audioSourcePlayer = [(AVAudioPlayer*)[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:&error];
+        NSData *ndata = [NSData dataWithBytes:data length:size];
+        audioSourcePlayer = [(AVAudioPlayer*)[AVAudioPlayer alloc] initWithData:ndata error:&error];
+        if (error == nil) {
+            [audioSourcePlayer prepareToPlay];
+            audioSourcePlayer.delegate = self;
+            if (delegate && [delegate respondsToSelector:@selector(cdAudioSourceFileDidChange:)]) {
+                //Tell our delegate the file has changed
+                [delegate cdAudioSourceFileDidChange:self];
+            }
+        } else {
+            CDLOG(@"Denshion::CDLongAudioSource - Error initialising audio player: %@",error);
+        }
+    } else {
+        //Same file - just return it to a consistent state
+        [self pause];
+        [self rewind];
+    }
+    audioSourcePlayer.volume = volume;
+    audioSourcePlayer.numberOfLoops = numberOfLoops;
+    state = kLAS_Loaded;
+}
 
 -(void) play {
     if (enabled_) {
@@ -549,7 +584,12 @@ static BOOL configured = FALSE;
 -(void) preloadBackgroundMusic:(NSString*) filePath
 {
     [self.backgroundMusic load:filePath];    
-}    
+}
+
+-(void) preloadBackgroundMusic:(NSString*) filePath data:(const char *)data size:(unsigned int)size
+{
+    [self.backgroundMusic load:filePath data: data size:size];
+}
 
 -(void) playBackgroundMusic:(NSString*) filePath loop:(BOOL) loop
 {
@@ -887,7 +927,45 @@ static BOOL configured = FALSE;
     } else {
         return [soundId intValue];
     }    
-}    
+}
+
+-(int) bufferForFile:(NSString*) filePath data:(const char*) data size:(unsigned int) size {
+    
+    NSNumber* soundId = (NSNumber*)[loadedBuffers objectForKey:filePath];
+    if(soundId == nil)
+    {
+        if (1/*create*/) {
+            NSNumber* bufferId = nil;
+            //First try to get a buffer from the free buffers
+            if ([freedBuffers count] > 0) {
+                bufferId = [[[freedBuffers lastObject] retain] autorelease];
+                [freedBuffers removeLastObject];
+                CDLOGINFO(@"Denshion::CDBufferManager reusing buffer id %i",[bufferId intValue]);
+            } else {
+                bufferId = [[NSNumber alloc] initWithInt:nextBufferId];
+                [bufferId autorelease];
+                CDLOGINFO(@"Denshion::CDBufferManager generating new buffer id %i",[bufferId intValue]);
+                nextBufferId++;
+            }
+            
+            if ([soundEngine loadBuffer:[bufferId intValue] filePath:filePath inData:data inDataSize:size]) {
+                //File successfully loaded
+                CDLOGINFO(@"Denshion::CDBufferManager buffer loaded %@ %@",bufferId,filePath);
+                [loadedBuffers setObject:bufferId forKey:filePath];
+                return [bufferId intValue];
+            } else {
+                //File didn't load, put buffer id on free list
+                [freedBuffers addObject:bufferId];
+                return kCDNoBuffer;
+            }
+        } else {
+            //No matching buffer was found
+            return kCDNoBuffer;
+        }
+    } else {
+        return [soundId intValue];
+    }
+}
 
 -(void) releaseBufferForFile:(NSString *) filePath {
     int bufferId = [self bufferForFile:filePath create:NO];

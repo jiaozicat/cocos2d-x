@@ -182,6 +182,11 @@ void SimpleAudioEngine::preloadBackgroundMusic(const char* pszFilePath)
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
     static_preloadBackgroundMusic(fullPath.c_str());
 }
+    
+void SimpleAudioEngine::preloadBackgroundMusic(const char* pszFilePath, const char* data, unsigned int size)
+{
+    assert(0 && "todo...");
+}
 
 void SimpleAudioEngine::playBackgroundMusic(const char* pszFilePath, bool bLoop)
 {
@@ -258,6 +263,11 @@ void SimpleAudioEngine::preloadEffect(const char* pszFilePath)
     // Changing file path to full path
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
     static_preloadEffect(fullPath.c_str());
+}
+    
+void SimpleAudioEngine::preloadEffect(const char* pszFilePath, const char* data, unsigned int size)
+{
+    assert(0 && "todo...");
 }
 
 void SimpleAudioEngine::unloadEffect(const char* pszFilePath)

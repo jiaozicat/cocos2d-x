@@ -610,6 +610,37 @@ static BOOL _mixerRateSet = NO;
     }    
 }
 
+-(BOOL) loadBuffer:(int) soundId filePath:(NSString*) filePath inData:(const char*) inData inDataSize:(unsigned int) inDataSize
+{
+    ALvoid* data;
+    ALenum  format;
+    ALsizei size;
+    ALsizei freq;
+    
+    CDLOGINFO(@"Denshion::CDSoundEngine - Loading openAL buffer %i %@", soundId, filePath);
+    
+    CFURLRef fileURL = nil;
+    NSString *path = [CDUtilities fullPathFromRelativePath:filePath];
+    if (path) {
+        fileURL = (CFURLRef)[[NSURL fileURLWithPath:path] retain];
+    }
+    
+    if (fileURL)
+    {
+        data = CDGetOpenALAudioDataFromData(fileURL, &size, &format, &freq, inData, inDataSize);
+        CFRelease(fileURL);
+        BOOL result = [self loadBufferFromData:soundId soundData:data format:format size:size freq:freq];
+#ifndef CD_USE_STATIC_BUFFERS
+        free(data);//Data can be freed here because alBufferData performs a memcpy
+#endif
+        return result;
+    } else {
+        CDLOG(@"Denshion::CDSoundEngine Could not find file!\n");
+        //Don't change buffer state here as it will be the same as before method was called
+        return FALSE;
+    }
+}
+
 -(BOOL) validateBufferId:(int) soundId {
     if (soundId < 0 || soundId >= bufferTotal) {
         CDLOGINFO(@"Denshion::CDSoundEngine - validateBufferId buffer outside range %i",soundId);
@@ -620,7 +651,7 @@ static BOOL _mixerRateSet = NO;
     } else {
         return YES;
     }    
-}    
+}
 
 -(float) bufferDurationInSeconds:(int) soundId {
     if ([self validateBufferId:soundId]) {

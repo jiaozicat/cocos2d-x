@@ -55,6 +55,7 @@
 
 /** Preloads a music file so it will be ready to play as background music */
 -(void) preloadBackgroundMusic:(NSString*) filePath;
+-(void) preloadBackgroundMusic:(NSString*) filePath data:(const char*) data size:(unsigned int)size;
 
 /** plays background music in a loop*/
 -(void) playBackgroundMusic:(NSString*) filePath;
@@ -89,6 +90,7 @@
 -(void) stopAllEffects;
 /** preloads an audio effect */
 -(void) preloadEffect:(NSString*) filePath;
+-(void) preloadEffect:(NSString*) filePath data:(const char*) data size:(unsigned int) size;
 /** unloads an audio effect from memory */
 -(void) unloadEffect:(NSString*) filePath;
 /** Gets a CDSoundSource object set up to play the specified file. */

@@ -270,6 +270,7 @@ typedef struct _sourceInfo {
 -(BOOL) sourceGroupEnabled:(int) sourceGroupId;
 -(BOOL) loadBufferFromData:(int) soundId soundData:(ALvoid*) soundData format:(ALenum) format size:(ALsizei) size freq:(ALsizei) freq;
 -(BOOL) loadBuffer:(int) soundId filePath:(NSString*) filePath;
+-(BOOL) loadBuffer:(int) soundId filePath:(NSString*) filePath inData:(const char*) inData inDataSize:(unsigned int) inDataSize;
 -(void) loadBuffersAsynchronously:(NSArray *) loadRequests;
 -(BOOL) unloadBuffer:(int) soundId;
 -(ALCcontext *) openALContext;

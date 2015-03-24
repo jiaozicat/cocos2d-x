@@ -68,6 +68,10 @@ void* CDloadWaveAudioData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outD
 void* CDloadCafAudioData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei* outSampleRate);
 void* CDGetOpenALAudioData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei* outSampleRate);
     
+void* CDloadWaveAudioDataFromData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei*    outSampleRate, const char* inData, unsigned int inDataSize);
+void* CDloadCafAudioDataFromData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei* outSampleRate, const char* inData, unsigned int inDataSize);
+void* CDGetOpenALAudioDataFromData(CFURLRef inFileURL, ALsizei *outDataSize, ALenum *outDataFormat, ALsizei* outSampleRate, const char* inData, unsigned int inDataSize);
+
 #ifdef __cplusplus
 }
 #endif

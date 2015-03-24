@@ -82,6 +82,7 @@ public:
      * @lua preloadMusic
      */
     virtual void preloadBackgroundMusic(const char* pszFilePath);
+    virtual void preloadBackgroundMusic(const char* pszFilePath, const char* data, unsigned int size);
     
     /**
      @brief Play background music
@@ -225,6 +226,7 @@ public:
     @param pszFilePath The path of the effect file
     */
     virtual void preloadEffect(const char* pszFilePath);
+    virtual void preloadEffect(const char* pszFilePath, const char* data, unsigned int size);
 
     /**
     @brief          unload the preloaded effect from internal buffer

@@ -86,6 +86,10 @@ static CDBufferManager *bufferManager = nil;
     [am preloadBackgroundMusic:filePath];
 }
 
+-(void) preloadBackgroundMusic:(NSString*) filePath data:(const char*) data size:(unsigned int) size {
+    [am preloadBackgroundMusic:filePath data: data size: size];
+}
+
 -(void) playBackgroundMusic:(NSString*) filePath
 {
     [am playBackgroundMusic:filePath loop:TRUE];
@@ -165,6 +169,14 @@ static CDBufferManager *bufferManager = nil;
 -(void) preloadEffect:(NSString*) filePath
 {
     int soundId = [bufferManager bufferForFile:filePath create:YES];
+    if (soundId == kCDNoBuffer) {
+        CDLOG(@"Denshion::SimpleAudioEngine sound failed to preload %@",filePath);
+    }
+}
+
+-(void) preloadEffect:(NSString*) filePath data:(const char*) data size:(unsigned int) size
+{
+    int soundId = [bufferManager bufferForFile:filePath data: data size: size];
     if (soundId == kCDNoBuffer) {
         CDLOG(@"Denshion::SimpleAudioEngine sound failed to preload %@",filePath);
     }

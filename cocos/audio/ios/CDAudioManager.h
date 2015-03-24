@@ -118,6 +118,7 @@ typedef enum {
 
 /** Loads the file into the audio source */
 -(void) load:(NSString*) filePath;
+-(void) load:(NSString*) filePath data:(const char*) data size:(unsigned int) size;
 /** Plays the audio source */
 -(void) play;
 /** Stops playing the audio soruce */
@@ -210,6 +211,7 @@ typedef enum {
 -(void) playBackgroundMusic:(NSString*) filePath loop:(BOOL) loop;
 /** Preloads a background music */
 -(void) preloadBackgroundMusic:(NSString*) filePath;
+-(void) preloadBackgroundMusic:(NSString*) filePath data:(const char*) data size:(unsigned int) size;
 /** Stops playing the background music */
 -(void) stopBackgroundMusic;
 /** Pauses the background music */
@@ -241,6 +243,7 @@ static const int kCDNoBuffer = -1;
 
 -(id) initWithEngine:(CDSoundEngine *) theSoundEngine;
 -(int) bufferForFile:(NSString*) filePath create:(BOOL) create;
+-(int) bufferForFile:(NSString*) filePath data:(const char*) data size:(unsigned int) size;
 -(void) releaseBufferForFile:(NSString *) filePath;
 
 @end

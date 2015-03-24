@@ -37,6 +37,11 @@ static void static_preloadBackgroundMusic(const char* pszFilePath)
     [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: [NSString stringWithUTF8String: pszFilePath]];
 }
 
+static void static_preloadBackgroundMusic(const char* pszFilePath, const char* data, unsigned int size)
+{
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic: [NSString stringWithUTF8String: pszFilePath] data: data size:size];
+}
+
 static void static_playBackgroundMusic(const char* pszFilePath, bool bLoop)
 {
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic: [NSString stringWithUTF8String: pszFilePath] loop: bLoop];
@@ -107,6 +112,11 @@ static void static_stopEffect(int nSoundId)
 static void static_preloadEffect(const char* pszFilePath)
 {
     [[SimpleAudioEngine sharedEngine] preloadEffect: [NSString stringWithUTF8String: pszFilePath]];
+}
+
+static void static_preloadEffect(const char* pszFilePath, const char* data, unsigned int size)
+{
+    [[SimpleAudioEngine sharedEngine] preloadEffect: [NSString stringWithUTF8String: pszFilePath] data: data size: size];
 }
      
 static void static_unloadEffect(const char* pszFilePath)
@@ -179,6 +189,12 @@ void SimpleAudioEngine::preloadBackgroundMusic(const char* pszFilePath)
     // Changing file path to full path
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
     static_preloadBackgroundMusic(fullPath.c_str());
+}
+    
+void SimpleAudioEngine::preloadBackgroundMusic(const char* pszFilePath, const char* data, unsigned int size)
+{
+    std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
+    static_preloadBackgroundMusic(fullPath.c_str(), data, size);
 }
 
 void SimpleAudioEngine::playBackgroundMusic(const char* pszFilePath, bool bLoop)
@@ -256,6 +272,12 @@ void SimpleAudioEngine::preloadEffect(const char* pszFilePath)
     // Changing file path to full path
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
     static_preloadEffect(fullPath.c_str());
+}
+    
+void SimpleAudioEngine::preloadEffect(const char* pszFilePath, const char* data, unsigned int size)
+{
+    std::string fullPath = FileUtils::getInstance()->fullPathForFilename(pszFilePath);
+    static_preloadEffect(fullPath.c_str(), data, size);
 }
 
 void SimpleAudioEngine::unloadEffect(const char* pszFilePath)
