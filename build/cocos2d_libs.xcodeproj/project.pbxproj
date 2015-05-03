@@ -1821,7 +1821,6 @@
 		B3AF01A21842FBA400A98B85 /* b2MotorJoint.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AF019F1842FBA400A98B85 /* b2MotorJoint.h */; };
 		B3AF01A31842FBA400A98B85 /* b2MotorJoint.h in Headers */ = {isa = PBXBuildFile; fileRef = B3AF019F1842FBA400A98B85 /* b2MotorJoint.h */; };
 		B3B12A5A17E7F44000026B4A /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03F2CB81780BD04006731B9 /* libchipmunk Mac.a */; };
-		B3B12A5B17E7F45C00026B4A /* libchipmunk iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A07A4F3B178387670073F6A7 /* libchipmunk iOS.a */; };
 		B6AAF84119404E0D0069DE01 /* CCBundle3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6AAF83F19404E0D0069DE01 /* CCBundle3D.cpp */; };
 		B6AAF84219404E0D0069DE01 /* CCBundle3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6AAF83F19404E0D0069DE01 /* CCBundle3D.cpp */; };
 		B6AAF84319404E0D0069DE01 /* CCBundle3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6AAF84019404E0D0069DE01 /* CCBundle3D.h */; };
@@ -1840,6 +1839,13 @@
 		B6B26344193884D60088FE25 /* CCAnimation3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B26341193884D60088FE25 /* CCAnimation3D.cpp */; };
 		B6B26345193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
 		B6B26346193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
+		E2A988A91AF142ED0071E35C /* libwebsockets_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988A81AF142ED0071E35C /* libwebsockets_arm64.a */; };
+		E2A988AB1AF143080071E35C /* libwebp_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988AA1AF143080071E35C /* libwebp_arm64.a */; };
+		E2A988AD1AF1431D0071E35C /* libtiff_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988AC1AF1431D0071E35C /* libtiff_arm64.a */; };
+		E2A988AF1AF143340071E35C /* libcurl_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988AE1AF143340071E35C /* libcurl_arm64.a */; };
+		E2A988B11AF143470071E35C /* libjpeg_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988B01AF143470071E35C /* libjpeg_arm64.a */; };
+		E2A988B31AF1435F0071E35C /* libpng_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988B21AF1435F0071E35C /* libpng_arm64.a */; };
+		E2A988B51AF143740071E35C /* libfreetype_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A988B41AF143740071E35C /* libfreetype_arm64.a */; };
 		ED9C6A9418599AD8000A5232 /* CCNodeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */; };
 		ED9C6A9518599AD8000A5232 /* CCNodeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */; };
 		ED9C6A9618599AD8000A5232 /* CCNodeGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9C6A9318599AD8000A5232 /* CCNodeGrid.h */; };
@@ -2912,6 +2918,13 @@
 		B6B2633C19381FBF0088FE25 /* CCAnimationCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimationCurve.h; sourceTree = "<group>"; };
 		B6B26341193884D60088FE25 /* CCAnimation3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAnimation3D.cpp; sourceTree = "<group>"; };
 		B6B26342193884D60088FE25 /* CCAnimation3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimation3D.h; sourceTree = "<group>"; };
+		E2A988A81AF142ED0071E35C /* libwebsockets_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets_arm64.a; path = ../external/websockets/prebuilt/ios/libwebsockets_arm64.a; sourceTree = "<group>"; };
+		E2A988AA1AF143080071E35C /* libwebp_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp_arm64.a; path = ../external/webp/prebuilt/ios/libwebp_arm64.a; sourceTree = "<group>"; };
+		E2A988AC1AF1431D0071E35C /* libtiff_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff_arm64.a; path = ../external/tiff/prebuilt/ios/libtiff_arm64.a; sourceTree = "<group>"; };
+		E2A988AE1AF143340071E35C /* libcurl_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl_arm64.a; path = ../external/curl/prebuilt/ios/libcurl_arm64.a; sourceTree = "<group>"; };
+		E2A988B01AF143470071E35C /* libjpeg_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg_arm64.a; path = ../external/jpeg/prebuilt/ios/libjpeg_arm64.a; sourceTree = "<group>"; };
+		E2A988B21AF1435F0071E35C /* libpng_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng_arm64.a; path = ../external/png/prebuilt/ios/libpng_arm64.a; sourceTree = "<group>"; };
+		E2A988B41AF143740071E35C /* libfreetype_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype_arm64.a; path = ../external/freetype2/prebuilt/ios/libfreetype_arm64.a; sourceTree = "<group>"; };
 		ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CCNodeGrid.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		ED9C6A9318599AD8000A5232 /* CCNodeGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeGrid.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2965,7 +2978,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3B12A5B17E7F45C00026B4A /* libchipmunk iOS.a in Frameworks */,
+				E2A988B51AF143740071E35C /* libfreetype_arm64.a in Frameworks */,
+				E2A988B31AF1435F0071E35C /* libpng_arm64.a in Frameworks */,
+				E2A988B11AF143470071E35C /* libjpeg_arm64.a in Frameworks */,
+				E2A988AF1AF143340071E35C /* libcurl_arm64.a in Frameworks */,
+				E2A988AD1AF1431D0071E35C /* libtiff_arm64.a in Frameworks */,
+				E2A988AB1AF143080071E35C /* libwebp_arm64.a in Frameworks */,
+				E2A988A91AF142ED0071E35C /* libwebsockets_arm64.a in Frameworks */,
 				A07A4CAF1783777C0073F6A7 /* Foundation.framework in Frameworks */,
 				1A570364180BD1120088DEC7 /* libpng.a in Frameworks */,
 				1A570378180BD1B40088DEC7 /* libjpeg.a in Frameworks */,
@@ -3075,6 +3094,13 @@
 		1551A341158F2AB200E66CFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2A988B41AF143740071E35C /* libfreetype_arm64.a */,
+				E2A988B21AF1435F0071E35C /* libpng_arm64.a */,
+				E2A988B01AF143470071E35C /* libjpeg_arm64.a */,
+				E2A988AE1AF143340071E35C /* libcurl_arm64.a */,
+				E2A988AC1AF1431D0071E35C /* libtiff_arm64.a */,
+				E2A988AA1AF143080071E35C /* libwebp_arm64.a */,
+				E2A988A81AF142ED0071E35C /* libwebsockets_arm64.a */,
 				1551A342158F2AB200E66CFE /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -7470,6 +7496,13 @@
 					"\"$(SRCROOT)/../external/freetype2/prebuilt/ios\"",
 					"\"$(SRCROOT)/../external/websockets/prebuilt/ios\"",
 					"\"$(SRCROOT)/../external/curl/prebuilt/ios\"",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/websockets/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/webp/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/tiff/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/curl/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/jpeg/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/png/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/freetype2/prebuilt/ios",
 				);
 				"OTHER_LDFLAGS[arch=arm64]" = (
 					"-lcurl_arm64",
@@ -7510,6 +7543,13 @@
 					"\"$(SRCROOT)/../external/freetype2/prebuilt/ios\"",
 					"\"$(SRCROOT)/../external/websockets/prebuilt/ios\"",
 					"\"$(SRCROOT)/../external/curl/prebuilt/ios\"",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/websockets/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/webp/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/tiff/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/curl/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/jpeg/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/png/prebuilt/ios",
+					"/Users/Tom/Desktop/bitbucket/jaws/client/deps/cocos2d-x/external/freetype2/prebuilt/ios",
 				);
 				"OTHER_LDFLAGS[arch=arm64]" = (
 					"-lcurl_arm64",
